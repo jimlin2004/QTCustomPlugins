@@ -1,15 +1,19 @@
 #include "QCollapsibleWidget.h"
 
-QCollapsibleWidget::QCollapsibleWidget(QWidget *parent) :
-    QWidget(parent)
+QCollapsibleWidget::QCollapsibleWidget(QWidget *parent)
+    : QWidget(parent)
+    , verticalLayout(new QVBoxLayout(this))
+    , pushButton(new QPushButton(this))
+    , isContentClose(false)
+
 {
-    this->verticalLayout = new QVBoxLayout(this);
-    this->setObjectName("verticalLayout");
-    this->pushButton = new QPushButton(this);
+    this->verticalLayout->setObjectName("verticalLayout");
     this->pushButton->setObjectName("pushButton");
     this->verticalLayout->addWidget(this->pushButton);
     this->verticalLayout->setContentsMargins(0, 0, 0, 0);
     this->verticalLayout->setSpacing(0);
+
+    connect(this->pushButton, &QPushButton::clicked, this, &QCollapsibleWidget::changeContentState);
 }
 
 QString QCollapsibleWidget::getTitle() const
@@ -45,5 +49,19 @@ void QCollapsibleWidget::childEvent(QChildEvent *event)
                 this->contentWidget = nullptr;
             }
         }
+    }
+}
+
+void QCollapsibleWidget::changeContentState()
+{
+    if (this->isContentClose)
+    {
+        this->contentWidget->show();
+        this->isContentClose = false;
+    }
+    else
+    {
+        this->contentWidget->hide();
+        this->isContentClose = true;
     }
 }

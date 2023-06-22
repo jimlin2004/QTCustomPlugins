@@ -18,12 +18,15 @@ public:
     QString getTitle() const;
     void setTitle(QString title);
     void setLayout(QLayout* layout);
+public slots:
+    void changeContentState();
 protected:
     void childEvent(QChildEvent *event) override;
 private:
     QVBoxLayout* verticalLayout;
     QPushButton* pushButton;
     QWidget* contentWidget;
+    bool isContentClose;
 };
 
 #endif // QCOLLAPSIBLEWIDGET_H
