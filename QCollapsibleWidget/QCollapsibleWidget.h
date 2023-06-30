@@ -12,12 +12,15 @@ class QCollapsibleWidget : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(QString Title READ getTitle WRITE setTitle)
+    Q_PROPERTY(QString PushButtonStyle READ getPushButtonStyle WRITE setPushButtonStyle);
 public:
     QCollapsibleWidget(QWidget *parent = 0);
 
     QString getTitle() const;
     void setTitle(QString title);
     void setLayout(QLayout* layout);
+    QString getPushButtonStyle() const;
+    void setPushButtonStyle(QString styleSheet);
 public slots:
     void changeContentState();
 protected:

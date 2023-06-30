@@ -7,6 +7,7 @@ QCollapsibleWidget::QCollapsibleWidget(QWidget *parent)
     , isContentClose(false)
 
 {
+    this->verticalLayout->setAlignment(Qt::AlignTop);
     this->verticalLayout->setObjectName("verticalLayout");
     this->pushButton->setObjectName("pushButton");
     this->verticalLayout->addWidget(this->pushButton);
@@ -42,6 +43,10 @@ void QCollapsibleWidget::childEvent(QChildEvent *event)
             {
                 this->verticalLayout->addWidget(widget);
                 this->contentWidget = widget;
+                QSizePolicy sizePolicy;
+                sizePolicy.setHorizontalPolicy(QSizePolicy::Expanding);
+                sizePolicy.setVerticalPolicy(QSizePolicy::Expanding);
+                this->contentWidget->setSizePolicy(sizePolicy);
             }
             else
             {
@@ -64,4 +69,13 @@ void QCollapsibleWidget::changeContentState()
         this->contentWidget->hide();
         this->isContentClose = true;
     }
+}
+
+QString QCollapsibleWidget::getPushButtonStyle() const
+{
+    return this->pushButton->styleSheet();
+}
+void QCollapsibleWidget::setPushButtonStyle(QString styleSheet)
+{
+    this->pushButton->setStyleSheet(styleSheet);
 }

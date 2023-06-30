@@ -26,11 +26,12 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_QCollapsibleWidget_t {
-    uint offsetsAndSizes[8];
+    uint offsetsAndSizes[10];
     char stringdata0[19];
     char stringdata1[19];
     char stringdata2[1];
     char stringdata3[6];
+    char stringdata4[16];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_QCollapsibleWidget_t::offsetsAndSizes) + ofs), len 
@@ -39,12 +40,14 @@ Q_CONSTINIT static const qt_meta_stringdata_QCollapsibleWidget_t qt_meta_stringd
         QT_MOC_LITERAL(0, 18),  // "QCollapsibleWidget"
         QT_MOC_LITERAL(19, 18),  // "changeContentState"
         QT_MOC_LITERAL(38, 0),  // ""
-        QT_MOC_LITERAL(39, 5)   // "Title"
+        QT_MOC_LITERAL(39, 5),  // "Title"
+        QT_MOC_LITERAL(45, 15)   // "PushButtonStyle"
     },
     "QCollapsibleWidget",
     "changeContentState",
     "",
-    "Title"
+    "Title",
+    "PushButtonStyle"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -56,20 +59,21 @@ Q_CONSTINIT static const uint qt_meta_data_QCollapsibleWidget[] = {
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
-       1,   21, // properties
+       2,   21, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x0a,    2 /* Public */,
+       1,    0,   20,    2, 0x0a,    3 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
 
  // properties: name, type, flags
        3, QMetaType::QString, 0x00015103, uint(-1), 0,
+       4, QMetaType::QString, 0x00015103, uint(-1), 0,
 
        0        // eod
 };
@@ -82,6 +86,8 @@ Q_CONSTINIT const QMetaObject QCollapsibleWidget::staticMetaObject = { {
     nullptr,
     qt_incomplete_metaTypeArray<qt_meta_stringdata_QCollapsibleWidget_t,
         // property 'Title'
+        QtPrivate::TypeAndForceComplete<QString, std::true_type>,
+        // property 'PushButtonStyle'
         QtPrivate::TypeAndForceComplete<QString, std::true_type>,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCollapsibleWidget, std::true_type>,
@@ -106,6 +112,7 @@ void QCollapsibleWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         void *_v = _a[0];
         switch (_id) {
         case 0: *reinterpret_cast< QString*>(_v) = _t->getTitle(); break;
+        case 1: *reinterpret_cast< QString*>(_v) = _t->getPushButtonStyle(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -114,6 +121,7 @@ void QCollapsibleWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         void *_v = _a[0];
         switch (_id) {
         case 0: _t->setTitle(*reinterpret_cast< QString*>(_v)); break;
+        case 1: _t->setPushButtonStyle(*reinterpret_cast< QString*>(_v)); break;
         default: break;
         }
     } else if (_c == QMetaObject::ResetProperty) {
@@ -152,7 +160,7 @@ int QCollapsibleWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
