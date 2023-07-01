@@ -3,3 +3,6 @@
 	2. 新增LineEditInt、LineEditFloat
 2023/07/01
 	1. LineEditInt、LineEditFloat新增setValue功能
+	存檔紀錄version 1.0
+	2. LineEditInt、LineEditFloat新增setValue功能
+	存檔紀錄version 2.0
