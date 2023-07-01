@@ -1,3 +1,5 @@
-20230630
+2023/06/30
 	1. 改變QCollapsibleWidget的verticalLayout為靠上對齊
 	2. 新增LineEditInt、LineEditFloat
+2023/07/01
+	1. LineEditInt、LineEditFloat新增setValue功能

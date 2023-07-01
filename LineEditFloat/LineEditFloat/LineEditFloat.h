@@ -1,5 +1,5 @@
-#ifndef LINEEDITINT_H
-#define LINEEDITINT_H
+#ifndef LINEEDITFLOAT_H
+#define LINEEDITFLOAT_H
 
 #include <QLineEdit>
 #include <exception>
@@ -12,10 +12,11 @@ public:
     LineEditFloat(QWidget *parent = 0);
     void bind(float* ptr);
     float getValue() const;
+    void setValue(float val);
 private:
     float* _dataPtr;
 private slots:
     void onEditingFinished();
 };
 
-#endif // LINEEDITINT_H
+#endif // LINEEDITFLOAT_H

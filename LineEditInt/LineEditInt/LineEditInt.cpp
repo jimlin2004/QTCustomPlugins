@@ -14,6 +14,7 @@ void LineEditInt::bind(int* ptr)
         return;
     this->_dataPtr = ptr;
     this->setEnabled(true);
+    this->setText(QString::number(*(ptr)));
 }
 
 void LineEditInt::onEditingFinished()
@@ -28,4 +29,11 @@ int LineEditInt::getValue() const
     if (this->_dataPtr == nullptr)
         throw std::runtime_error("must bind data pointer before get its value");
     return this->text().toInt();
+}
+
+void LineEditInt::setValue(int val)
+{
+    if (this->_dataPtr == nullptr)
+        throw std::runtime_error("must bind data pointer before set its value");
+    (*this->_dataPtr) = val;
 }

@@ -41,12 +41,9 @@ void QCollapsibleWidget::childEvent(QChildEvent *event)
             QWidget* widget = qobject_cast<QWidget*>(event->child());
             if (widget != nullptr)
             {
-                this->verticalLayout->addWidget(widget);
                 this->contentWidget = widget;
-                QSizePolicy sizePolicy;
-                sizePolicy.setHorizontalPolicy(QSizePolicy::Expanding);
-                sizePolicy.setVerticalPolicy(QSizePolicy::Expanding);
-                this->contentWidget->setSizePolicy(sizePolicy);
+                this->contentWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+                this->verticalLayout->addWidget(widget);
             }
             else
             {

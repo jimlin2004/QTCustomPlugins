@@ -14,6 +14,7 @@ void LineEditFloat::bind(float* ptr)
         return;
     this->_dataPtr = ptr;
     this->setEnabled(true);
+    this->setText(QString::number(*(ptr)));
 }
 
 void LineEditFloat::onEditingFinished()
@@ -28,4 +29,11 @@ float LineEditFloat::getValue() const
     if (this->_dataPtr == nullptr)
         throw std::runtime_error("must bind data pointer before get its value");
     return this->text().toFloat();
+}
+
+void LineEditFloat::setValue(float val)
+{
+    if (this->_dataPtr == nullptr)
+        throw std::runtime_error("must bind data pointer before set its value");
+    (*this->_dataPtr) = val;
 }
