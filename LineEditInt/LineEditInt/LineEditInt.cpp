@@ -38,3 +38,9 @@ void LineEditInt::setValue(int val)
     (*this->_dataPtr) = val;
     this->setText(QString::number(*(this->_dataPtr)));
 }
+
+void LineEditInt::refresh()
+{
+    if (this->_dataPtr != nullptr)
+        this->setText(QString::number(*(this->_dataPtr)));
+}

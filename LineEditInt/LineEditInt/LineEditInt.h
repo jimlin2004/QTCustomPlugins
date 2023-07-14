@@ -13,6 +13,7 @@ public:
     void bind(int* ptr);
     int getValue() const;
     void setValue(int val);
+    void refresh();
 private:
     int* _dataPtr;
 private slots:

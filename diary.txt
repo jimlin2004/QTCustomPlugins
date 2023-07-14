@@ -6,3 +6,6 @@
 	存檔紀錄version 1.0
 	2. LineEditInt、LineEditFloat新增setValue功能
 	存檔紀錄version 2.0
+2023/07/14
+	1. LineEditInt、LineEditFloat新增refresh功能
+	存檔紀錄version 1.0

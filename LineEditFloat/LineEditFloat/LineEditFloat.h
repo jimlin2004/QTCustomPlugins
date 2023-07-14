@@ -13,6 +13,7 @@ public:
     void bind(float* ptr);
     float getValue() const;
     void setValue(float val);
+    void refresh();
 private:
     float* _dataPtr;
 private slots:
