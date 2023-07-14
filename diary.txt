@@ -9,3 +9,10 @@
 2023/07/14
 	1. LineEditInt、LineEditFloat新增refresh功能
 	存檔紀錄version 1.0
+	2. 改變LineEditInt、LineEditFloat的getValue為回傳指標的值
+	3. LineEditInt、LineEditFloat新增focusIn/focusOut事件處理(改變isEditing)
+	4. LineEditInt、LineEditFloat的setValue改為virtual
+	5. 修改LineEditInt、LineEditFloat的onEditingFinished呼叫setValue
+	6. LineEditInt、LineEditFloat的onEditingFinished改為virtual
+	7. 將LineEditInt、LineEditFloat的變數自private改為protected
+	存檔紀錄version 2.0

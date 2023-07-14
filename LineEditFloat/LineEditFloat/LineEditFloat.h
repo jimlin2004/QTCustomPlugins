@@ -12,12 +12,19 @@ public:
     LineEditFloat(QWidget *parent = 0);
     void bind(float* ptr);
     float getValue() const;
-    void setValue(float val);
+    virtual void setValue(float val);
     void refresh();
-private:
-    float* _dataPtr;
+    inline bool isEditing() const
+    {
+        return this->_isEditing;
+    }
 private slots:
-    void onEditingFinished();
+    virtual void onEditingFinished();
+protected:
+    float* _dataPtr;
+    bool _isEditing;
+    virtual void focusInEvent(QFocusEvent* event) override;
+    virtual void focusOutEvent(QFocusEvent* event) override;
 };
 
 #endif // LINEEDITFLOAT_H

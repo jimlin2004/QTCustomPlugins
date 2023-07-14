@@ -12,12 +12,19 @@ public:
     LineEditInt(QWidget *parent = 0);
     void bind(int* ptr);
     int getValue() const;
-    void setValue(int val);
+    virtual void setValue(int val);
     void refresh();
-private:
-    int* _dataPtr;
+    inline bool isEditing() const
+    {
+        return this->_isEditing;
+    }
 private slots:
-    void onEditingFinished();
+    virtual void onEditingFinished();
+protected:
+    int* _dataPtr;
+    bool _isEditing;
+    virtual void focusInEvent(QFocusEvent* event) override;
+    virtual void focusOutEvent(QFocusEvent* event) override;
 };
 
 #endif // LINEEDITINT_H
