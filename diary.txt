@@ -16,3 +16,6 @@
 	6. LineEditInt、LineEditFloat的onEditingFinished改為virtual
 	7. 將LineEditInt、LineEditFloat的變數自private改為protected
 	存檔紀錄version 2.0
+2023/08/07
+	1. 修復QCollapsibleWidget的c++創建功能(原本不是Designer創建的會沒有contentWidget)
+	存檔紀錄version 2.1

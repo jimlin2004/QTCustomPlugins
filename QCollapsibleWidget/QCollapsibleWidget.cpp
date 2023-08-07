@@ -3,14 +3,19 @@
 QCollapsibleWidget::QCollapsibleWidget(QWidget *parent)
     : QWidget(parent)
     , verticalLayout(new QVBoxLayout(this))
-    , pushButton(new QPushButton(this))
+    , contentWidget(nullptr)
+    , pushButton(new QPushButton())
     , isContentClose(false)
-
+    , needToInsertPushButton(true)
 {
     this->verticalLayout->setAlignment(Qt::AlignTop);
     this->verticalLayout->setObjectName("verticalLayout");
+    //必須使用這個，不能在constuctor中呼叫，猜測是因為QPushbutton的constructor呼叫QWidget
+    //否則childEvent會出錯
+    this->pushButton->setParent(this);
     this->pushButton->setObjectName("pushButton");
-    this->verticalLayout->addWidget(this->pushButton);
+    if (this->needToInsertPushButton)
+        this->verticalLayout->addWidget(this->pushButton);
     this->verticalLayout->setContentsMargins(0, 0, 0, 0);
     this->verticalLayout->setSpacing(0);
 
@@ -39,11 +44,24 @@ void QCollapsibleWidget::childEvent(QChildEvent *event)
         if (event->child()->isWidgetType())
         {
             QWidget* widget = qobject_cast<QWidget*>(event->child());
+            if (qobject_cast<QPushButton*>(widget) != nullptr)
+            {
+                //此時contentWidget需要在此加入(防止不是由designer加入的case)
+                this->verticalLayout->addWidget(widget);
+                this->contentWidget = new QWidget(this);
+                this->needToInsertPushButton = false;
+                return;
+            }
             if (widget != nullptr)
             {
                 this->contentWidget = widget;
                 this->contentWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-                this->verticalLayout->addWidget(widget);
+                if (this->verticalLayout->count() == 2)
+                {
+                    QLayoutItem* oldContentWidget = this->verticalLayout->takeAt(1);
+                    delete oldContentWidget->widget();
+                }
+                this->verticalLayout->addWidget(this->contentWidget);
             }
             else
             {
